@@ -32,8 +32,25 @@
 ## About The Project
 Web Application implemented with AWS Services
 
+### Built With
+
+Front end was build with HTML, CSS and JavaScript
+
+* [![HTML]]
+* [![CSS]]
+* [![JavaScript]]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+
+Backend was build using AWS Services, mainly Lambda functions implemented with Python 3.12, exposed through API Gateway routes
+
+* [![Lambda]]
+* [![API Gateway]]
+
+
 ## Usage
 
 Use this URL to test http://tech-assessment-bucket-frontend.s3-website-us-east-1.amazonaws.com/
 
 
+<!-- MARKDOWN LINKS & IMAGES -->
+[Bootstrap-url]: https://getbootstrap.com
