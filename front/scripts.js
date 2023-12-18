@@ -202,7 +202,7 @@ async function displayTable() {
             // Create rows based on the JSON data
             for (var i = 0; i < jsonData.length; i++) {
                 var row = document.createElement('tr');                
-                const percentageValue = parseFloat(jsonData[0].故障尤度).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 });
+                const percentageValue = parseFloat(jsonData[i].故障尤度).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 });
                 row.innerHTML = '<td>' + jsonData[i].部品名 + '</td><td>' + percentageValue + '</td><td>';
                 tbody.appendChild(row);
             }
