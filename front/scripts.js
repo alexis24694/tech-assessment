@@ -187,6 +187,8 @@ async function displayTable() {
             // Parse JSON only if the Content-Type is JSON
             const jsonData = await response.json();
 
+            jsonData.sort((a, b) => b.故障尤度 - a.故障尤度);
+
             // Get the result table
             var resultTable = document.getElementById('resultTable');
 
@@ -199,8 +201,9 @@ async function displayTable() {
 
             // Create rows based on the JSON data
             for (var i = 0; i < jsonData.length; i++) {
-                var row = document.createElement('tr');
-                row.innerHTML = '<td>' + jsonData[i].部品名 + '</td><td>' + jsonData[i].故障尤度 + '</td><td>';
+                var row = document.createElement('tr');                
+                const percentageValue = parseFloat(jsonData[0].故障尤度).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 });
+                row.innerHTML = '<td>' + jsonData[i].部品名 + '</td><td>' + percentageValue + '</td><td>';
                 tbody.appendChild(row);
             }
 
