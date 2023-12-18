@@ -1,0 +1,62 @@
+body {
+        font-family: Arial, sans-serif;
+    }
+
+    .topbar {
+        background-color: #808080; /* Gray background color */
+        color: #ffffff; /* Text color */
+        text-align: left; /* Align text to the left */
+        padding: 10px; /* Add padding for better appearance */
+    }
+
+    .text-section {
+        padding: 20px;
+        text-align: left; /* Align text to the left */
+    }
+
+    .rectangle {
+        border: 2px solid red; /* Red border */
+        color: red;
+        padding: 10px; /* Add padding for better appearance */
+        margin-left: 20px; /* Add left margin */
+    }
+
+    button {
+        padding: 10px;
+        background-color: #808080; /* Gray background color */
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-left: 20px; /* Add left indentation */
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .important-note {
+        color: red;            
+    }
+
+    .underlined {
+        color:blue;
+        text-decoration: underline;
+    }
+
+    #resultTable {
+        display: none; /* Initially hide the table */
+        margin-top: 20px; /* Add margin between the form and table */
+    }
+
+    #resultTable th, #resultTable td {
+        border-bottom: 1px solid #ddd; /* Horizontal borders */
+        padding: 10px;
+        text-align: left;
+    }
+
+    #resultTable th {
+        background-color: #808080; /* Gray background color for header */
+        color: #fff;
+    }

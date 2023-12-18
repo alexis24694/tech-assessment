@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'AWS CloudFormation Template'
+
+Resources:
+  FrontEndBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: 'tech-assessment-bucket-frontend'
+      # Add other bucket properties as needed
+    DeletionPolicy: Retain
+
+  BackEndBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: 'tech-assessment-bucket-backend'
+      # Add other bucket properties as needed
+    DeletionPolicy: Retain
+
+  SaveRequestLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: 'saveRequestData'
+      #Handler: 'index.handler'
+      #Role: !GetAtt LambdaExecutionRole.Arn
+      # Add other Lambda function properties as needed
+    DeletionPolicy: Retain
+
+  LambdaExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: 'saveRequestData-role-0jb6dg4w'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service: 'lambda.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      # Add other IAM role properties as needed
+    DeletionPolicy: Retain
+
+  SaveRequestApiGateway:
+    Type: "AWS::ApiGateway::RestApi"
+    Properties:
+      Name: 'tech-assesment-save-request-data'
+      FailOnWarnings: 'true'
+      # Add other API Gateway properties as needed
+    DeletionPolicy: Retain

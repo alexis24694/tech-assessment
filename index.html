@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>故障部品検知メニュ(試用版)</title>
+</head>
+<body>
+
+    <div class="topbar">
+        <h2>故障部品検知メニュ(試用版)</h2>
+    </div>
+
+    <div class="text-section">
+        <p><span class="important-note">*</span>:必須項目</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form class="col-md-9" id="myForm" onsubmit="validateForm(event)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="sucursal"><span class="important-note">*</span>支店/支社</label>
+                            <select class="form-control" id="sucursal" name="支店/支社" required-custom data-error-message="支店/支社：入力必須です。選択してください">
+                                <option value=""></option>
+                                <option value="支店A">支店A</option>
+                                <option value="支店B">支店B</option>
+                            </select>
+                            <div class="error-message" id="sucursal-error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ss"><span class="important-note">*</span>SS</label>
+                            <select class="form-control" id="ss" name="SS" required-custom data-error-message="SS：入力必須です。選択してください">
+                                <option value=""></option>
+                                <!-- Options will be dynamically added here -->
+                            </select>
+                            <div class="error-message" id="ss-error-message"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="outdoorType"><span class="important-note">*</span>形名(室外)</label>
+                            <input type="text" class="form-control" id="outdoorType" name="形名(室外)" required-custom data-error-message="形名(室外)：入力必須です。入力してください。" data-pattern="^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$" data-pattern-error-message="形名(室外)：7～30文字の全角英数字、半角英数字、半角ハイフン、全角ハイフンで入力してください。" minlength="7" maxlength="30">
+                            <div class="error-message" id="outdoorType-error-message"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        例:MUZ-ZXV9020S <span class="underlined">WIN2K</span>
+                    </div>
+                                      
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="manufactureYear">設置年度</label>
+                            <select class="form-control" id="manufactureYear" name="設置年度">
+                                <option value=""></option>
+                                <option value="2023">2023年</option>
+                                <option value="2022">2022年</option>
+                                <option value="2021">2021年</option>
+                            </select>
+                            <div class="error-message" id="manufactureYear-error-message"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="voucher">伝票番号</label>
+                            <input type="text" class="form-control" id="voucher" name="伝票番号" data-pattern="^\d{6}$" data-pattern-error-message="伝票番号：6文字の数値（半角、全角）で入力してください。">
+                            <div class="error-message" id="voucher-error-message"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>６桁の数値です</div>
+                        <div class="important-note">不明な場合を除き、iPadタブレットから操作する際は、”必ず”入力してください。</div>
+                        <div class="important-note">伝票番号が未入力の場合、 したデータの難になる場合があります。</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        確認コード
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="mainItem">大項目</label>
+                            <select class="form-control" id="mainItem" name="大項目">
+                                <option value=""></option>
+                                <option value="大項目A">大項目A</option>
+                                <option value="大項目B">大項目B</option>
+                                <option value="大項目C">大項目C</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="middleItem">中項目</label>
+                            <select class="form-control" id="middleItem" name="中項目">
+                                <option value=""></option>
+                                <!-- Options will be dynamically added here -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="subItem">小項目</label>
+                            <select class="form-control" id="subItem" name="小項目">
+                                <option value=""></option>
+                                <!-- Options will be dynamically added here -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit">送信／分析</button>
+            </form>
+
+            <div class="col-md-3">
+                <div class="rectangle">
+                    <p>結果は過去の実をもとにAIで推定したものとなります。部品交換の参考情報としてお取り扱いください。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table to display after successful form submission -->
+        <table id="resultTable" class="table">
+            <thead>
+                <tr>
+                    <th>部品名</th>
+                    <th>故障尤度</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+
+</body>
+</html>
