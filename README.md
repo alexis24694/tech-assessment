@@ -34,18 +34,21 @@ Web Application implemented with AWS Services
 
 ### Built With
 
-Front end was build with HTML, CSS and JavaScript
-
 * HTML
 * CSS
 * JavaScript
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* S3
 
-Backend was build using AWS Services, mainly Lambda functions implemented with Python 3.12, exposed through API Gateway routes
+Front end was build with HTML, CSS and JavaScript and hosted in AWS S3 Bucket. Bucket had the s3:GetObject policy and CORS setup to allow access to specific IP Addresses. In the published site, this was disabled to allow any user to review the website implementation. Bucket Policy implementation can be reviewed in detail in resources/bucket.policy.json
 
 * Lambda
 * API Gateway
 
+Backend was build using AWS Services, mainly Lambda functions implemented with Python 3.12, exposed through API Gateway routes.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Usage
 
@@ -55,3 +58,5 @@ Use this URL to test http://tech-assessment-bucket-frontend.s3-website-us-east-1
 <!-- MARKDOWN LINKS & IMAGES -->
 [Bootstrap-url]: https://getbootstrap.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
